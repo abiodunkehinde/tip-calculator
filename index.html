@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tip Calculator</title>
+  <style>
+    body { background: #0f0f23; color: #fff; height: 100vh; display: flex; justify-content: center; align-items: center; margin: 0; }
+    .tip { background: #1a1a2e; padding: 30px; border-radius: 16px; width: 320px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    input, select { width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: none; background: #16213e; color: white; }
+    button { background: #ff006e; color: white; width: 100%; padding: 12px; border: none; border-radius: 8px; cursor: pointer; }
+    #result { margin-top: 15px; font-size: 1.2em; }
+  </style>
+</head>
+<body>
+  <div class="tip">
+    <h2>Tip Calculator</h2>
+    <input type="number" id="bill" placeholder="Bill Amount" value="50">
+    <select id="percent">
+      <option value="10">10%</option>
+      <option value="15" selected>15%</option>
+      <option value="20">20%</option>
+    </select>
+    <button onclick="calcTip()">Calculate</button>
+    <p id="result">Tip: $0.00</p>
+  </div>
+  <script>
+    function calcTip() {
+      const bill = parseFloat(document.getElementById('bill').value);
+      const percent = parseFloat(document.getElementById('percent').value);
+      const tip = (bill * percent / 100).toFixed(2);
+      document.getElementById('result').textContent = `Tip: $${tip} | Total: $${(bill + parseFloat(tip)).toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
